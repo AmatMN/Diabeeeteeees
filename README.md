@@ -17,4 +17,4 @@ Zorg ervoor dat alle componenten aangesloten zijn. Pins kunnen gewijzigd worden.
 Sluit de microcontroller aan met de computer en flash the software naar de microcontroller
 Nu heb je de software op de armband en hoeft niks aangepast te worden.
 --------------------------------------------------------------
-#MOBIELE APP
+## MOBIELE APP
