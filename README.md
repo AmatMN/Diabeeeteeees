@@ -1,6 +1,6 @@
 # README:
 
-#ARMBAND
+## ARMBAND
 De armband meet hartslag, lichaamstemperatuur, zuurstofgehalte en beweging van de persoon die
 de armband draagt. Voor die metingen zit voor ieder een sensor ingebouwd.
 
