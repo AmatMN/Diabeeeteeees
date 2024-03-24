@@ -1,4 +1,4 @@
-#README:
+# README:
 
 #ARMBAND
 De armband meet hartslag, lichaamstemperatuur, zuurstofgehalte en beweging van de persoon die
