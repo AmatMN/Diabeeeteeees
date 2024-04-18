@@ -43,14 +43,20 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 @RequiresApi(api = Build.VERSION_CODES.S)
 public class MainActivity extends AppCompatActivity implements BottomNavigationView
         .OnItemSelectedListener {
+    // this activity
     private static final String TAG = "MainActivity";
+    // bottom bar for fragment selection
     BottomNavigationView bottomNavigationView;
+    // a list of all addresses captured by the scanner so no duplicates are shown on the connect fragment
     private List<String> capturedAddresses;
     BluetoothAdapter mBluetoothAdapter;
     private BluetoothLeScanner mBluetoothLeScanner;
     private BluetoothGatt mBluetoothGatt;
+    // whether or not the mBluetoothLeScanner is scanning or not
     private boolean scanningEnd;
+    // a list of required permissions
     String[] permissions = new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.BLUETOOTH, Manifest.permission.BLUETOOTH_ADMIN, Manifest.permission.BLUETOOTH_SCAN, Manifest.permission.BLUETOOTH_CONNECT};
+    // the return code for those permissions
     int requestCodePermission;
     private static final UUID NOTIFY_SERVICE = UUID.fromString("4fafc201-1fb5-459e-8fcc-c5c9c331914b");
     private static final UUID NOTIFY_CHAR = UUID.fromString("beb5483e-36e1-4688-b7f5-ea07361b26a8");
@@ -69,8 +75,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         // set up the bottom navigation menu with a listener and set it to the data (first) fragment
         bottomNavigationView = findViewById(R.id.bottomnav);
-
+        // set the listener for presses on the bottom bar
         bottomNavigationView.setOnItemSelectedListener(this);
+        // set the active fragment to the data fragment
         bottomNavigationView.setSelectedItemId(R.id.data);
 
         // try to open the output file and write a break line in there
@@ -88,11 +95,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             throw new RuntimeException(e);
         }
 
+        // try to start the first fragment with the existing log
         firstFragment.Startup(temp);
 
         capturedAddresses = new ArrayList<>();
 
         // set up a timer to call update on the first and second fragments every 500 milliseconds
+        // https://stackoverflow.com/questions/4597690/how-to-set-timer-in-android
+        // parts of multiple answers were used of the above link to make the timer
         Timer timer2 = new Timer();
         timer2.scheduleAtFixedRate(new TimerTask()
         {
@@ -104,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         },0,500);
 
         // request permissions if missing else start scanning for bluetooth low energy devices
+        // https://www.youtube.com/watch?v=exsvuXbk_2U
         if (!hasPermissions(MainActivity.this, permissions)) {
             requestPermissions(permissions, requestCodePermission);
         } else {
@@ -142,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     /*
     This is the callback function for permission requests
     If permission is provided, start scanning for bluetooth low energy devices
+    https://www.youtube.com/watch?v=exsvuXbk_2U
     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -154,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     /*
     starts the scanner for BLE devices
+    https://www.youtube.com/watch?v=exsvuXbk_2U
      */
     private void scanLeDevice() {
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -176,6 +189,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     /*
     this function is called whenever a new device is discovered by the BLE scanner
+    partially used code from https://www.youtube.com/watch?v=exsvuXbk_2U
     */
     private final ScanCallback leScanCallback = new ScanCallback() {
         @Override
@@ -217,6 +231,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         /*
         This is the callback for everything that happens between the Gatt server on the bracelet and the app
+        partially used code from https://www.youtube.com/watch?v=exsvuXbk_2U
         */
         private final BluetoothGattCallback mGattCallback = new BluetoothGattCallback() {
             // If the connection changes (connect or disconnect) this function is called
@@ -283,6 +298,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             }
         };
 
+        // If the scan fails to get a valid uuid before it times out throw an error
         public void onScanFailed(int errorCode) {
             super.onScanFailed(errorCode);
         }
@@ -307,6 +323,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     /*
     Every time something that would need permission is used you need to check to see if you actually have those permissions
     This functions checks if the permissions are present
+    https://www.youtube.com/watch?v=exsvuXbk_2U
     */
     private boolean hasPermissions(Context context, String[] permissions){
         for (String permission:permissions){
