@@ -40,6 +40,16 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+
+/*
+ This project uses the GATT (Generic ATTribute) server protocol for data transfer
+ The GATT server protocol works with services and characteristics
+ The characteristics work on the Attribute protocol which saves data in a lookup table with 16 bit ID's
+ A service is a collection of one or more characteristics in a logical collection
+ Characteristics are a datapoint that is sent or received.
+ A characteristic can also hold properties that tell if it sends, receives, or notifies data
+
+ */
 @RequiresApi(api = Build.VERSION_CODES.S)
 public class MainActivity extends AppCompatActivity implements BottomNavigationView
         .OnItemSelectedListener {
