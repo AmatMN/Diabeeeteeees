@@ -349,11 +349,17 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     It then appends it to the output file
     */
     private void commitToFile(int hR, int o2, int mT, int tP) throws IOException {
+        // make the date format
         @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("'Date: 'dd-MM-yyyy HH:mm:ss");
+        // get the time and date in the previous format
         String currentDateAndTime = sdf.format(new Date());
+        // put the output string together
         final String entryString = currentDateAndTime + ", Heart rate: " + hR + ", O2: " + o2 + ", Motion: " + mT + ", Temperature: " + tP + "\n";
+        // open the file in append mode so the output gets added instead of overwriting
         FileOutputStream fOut = openFileOutput("SensorData1.txt", Context.MODE_APPEND);
+        // make a file writer for the file
         OutputStreamWriter outputWriter = new OutputStreamWriter(fOut);
+        // append the output text and close the connection
         outputWriter.append(entryString);
         outputWriter.flush();
         outputWriter.close();
@@ -375,16 +381,20 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     */
     public String readFromFile() throws IOException {
         String out = "";
+        // open the file
         InputStream inputStream = openFileInput("SensorData1.txt");
+        // if the file is found then make a file reader for it
         if(inputStream != null){
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             String temp = "";
+            // build the text from the document into a string
             StringBuilder stringBuilder = new StringBuilder();
             while((temp = bufferedReader.readLine()) != null){
                 stringBuilder.append(temp);
                 stringBuilder.append("\n");
             }
+            // close the stream and give the received string back
             inputStream.close();
             out = stringBuilder.toString();
         }
