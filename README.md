@@ -70,15 +70,23 @@ Hier staan de links naar de bronnen gebruikt in de code. De links staan ook in d
 ### App
 
 https://stackoverflow.com/questions/4597690/how-to-set-timer-in-android
+
 (android timer voor het updaten van de fragments)
+
 https://www.youtube.com/watch?v=exsvuXbk_2U
+
 (android BLE notify en permissions)
 
 ### Bracelet
 
 https://github.com/adafruit/Adafruit_MPU6050
+
 (code voor de MPU6050)
+
 https://github.com/sparkfun/SparkFun_MAX3010x_Sensor_Library/blob/master/examples/Example8_SPO2/Example8_SPO2.ino
+
 (code voor de max30102)
+
 https://github.com/espressif/arduino-esp32/tree/master/libraries/BLE/examples/Notify
+
 (code voor BLE Notify)
