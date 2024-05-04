@@ -38,6 +38,7 @@ Android Studio laad nu het project in. Dit kan even duren voordat alles helemaal
 
 De belangrijkste bestanden staan hier:
 
+```
 App --- java --- com.example.braceletapp --- MainActivity (het hoofd programma van de app. Meeste van de code staat hier.)
      |                                    |
      |                                    -- FirstFragment (de code voor het eerste scherm waar de inkomende metingen worden weergeven.)
@@ -59,7 +60,7 @@ App --- java --- com.example.braceletapp --- MainActivity (het hoofd programma v
              -- values --- colors.xml (opslag van kleurwaardes.)             
                         |
                         -- strings.xml (opslag van tekst die niet tijdens run-time wordt gegenereerd.)
-
+```
 ![handleiding](https://github.com/AmatMN/Diabeeeteeees/assets/55703008/46439d3c-c19c-4d96-88d7-a88b625fc399)
 
 ## BRONNEN
