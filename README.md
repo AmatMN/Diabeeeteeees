@@ -8,7 +8,9 @@ de armband draagt. Voor die metingen zit voor ieder een sensor ingebouwd.
 ### Componenten
 
 MPU-6050 module (accelerometer)
+
 max30102 module (hartslagsensor, zuurstofgehaltemeter, lichaamstemperatuursensor)
+
 SEEED XIAO ESP32S3 (microcontroller)
 
 ### Setup
