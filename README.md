@@ -28,11 +28,11 @@ Download de bestanden van deze github.
 
 In Android Studio selecteer open.
 
-![project manager]()
+![project manager](project manager.png)
 
 Selecteer de BraceletApp map van de gedownloade github bestanden.
 
-![map select]()
+![map select](map select.png)
 
 Android Studio laad nu het project in. Dit kan even duren voordat alles helemaal geladen is.
 
